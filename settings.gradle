@@ -1,2 +1,3 @@
+include ':dataLayer'
 include ':app'
 rootProject.name = "UnitTest"
