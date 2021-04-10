@@ -15,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField("String","DB_NAME",'"ShoppingDatabase"')
+        buildConfigField("String","API_KEY",API_KEY)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -36,6 +37,8 @@ android {
 }
 
 dependencies {
+
+    implementation project(':domain')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 

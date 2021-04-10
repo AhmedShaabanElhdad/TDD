@@ -6,8 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.example.datalayer.local.dao.ShoppingItemDao
-import com.example.datalayer.model.entity.ShoppingItem
-import com.google.common.truth.Truth
+import com.example.datalayer.model.entity.ShoppingItemDTO
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -49,7 +48,7 @@ class ShopingItemDaoTest {
     @Test
     fun insertShoppingItem() = runBlocking {
 
-        val item = ShoppingItem(
+        val item = ShoppingItemDTO(
             id = 1,
             name = "car",
             imageUrl = "",
@@ -66,7 +65,7 @@ class ShopingItemDaoTest {
     @Test
     fun DeleteOrder() = runBlocking {
 
-        val item = ShoppingItem(
+        val item = ShoppingItemDTO(
             id = 1,
             name = "car",
             imageUrl = "",
@@ -82,10 +81,10 @@ class ShopingItemDaoTest {
 
     @Test
     fun getTotalPrice() = runBlocking {
-        val items = listOf<ShoppingItem>(
-            ShoppingItem(id = 1, name = "car", imageUrl = "", price = 150000f, amount = 1),
-            ShoppingItem(id = 2, name = "wash Machine", imageUrl = "", price = 4000f, amount = 2),
-            ShoppingItem(id = 3, name = "TV", imageUrl = "", price = 6000f, amount = 3)
+        val items = listOf<ShoppingItemDTO>(
+            ShoppingItemDTO(id = 1, name = "car", imageUrl = "", price = 150000f, amount = 1),
+            ShoppingItemDTO(id = 2, name = "wash Machine", imageUrl = "", price = 4000f, amount = 2),
+            ShoppingItemDTO(id = 3, name = "TV", imageUrl = "", price = 6000f, amount = 3)
         )
         dao.addItems(items)
 

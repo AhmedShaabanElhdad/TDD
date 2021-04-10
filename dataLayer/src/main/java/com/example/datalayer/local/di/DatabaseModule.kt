@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.datalayer.BuildConfig
 import com.example.datalayer.local.ShoppingItemDatabase
+import com.example.datalayer.model.mapper.ImageMapper
+import com.example.datalayer.model.mapper.ShoppingItemMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +17,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-interface DatabaseModule {
+object DatabaseModule {
 
     @Singleton
     @Provides
@@ -27,5 +29,10 @@ interface DatabaseModule {
     @Singleton
     @Provides
     fun provideShoppingDao(database: ShoppingItemDatabase) = database.shoppingItemDao()
+
+
+    @Singleton
+    @Provides
+    fun provideShoppingITemMapper(): ShoppingItemMapper = ShoppingItemMapper()
 
 }
