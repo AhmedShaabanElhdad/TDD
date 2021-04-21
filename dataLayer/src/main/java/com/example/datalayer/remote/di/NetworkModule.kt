@@ -27,6 +27,7 @@ object NetworkModule {
     @Provides
     fun provideApiSercice(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
+
     @Singleton
     @Provides
     fun provideImageMapper():ImageMapper = ImageMapper()

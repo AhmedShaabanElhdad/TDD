@@ -1,38 +1,20 @@
-package com.example.datalayer.repositoryImp
+package com.example.datalayer.repository
 
 import com.example.datalayer.common.Resource
-import com.example.datalayer.local.ShoppingItemDatabase
 import com.example.datalayer.local.dao.ShoppingItemDao
-import com.example.datalayer.model.entity.ShoppingItemDTO
 import com.example.datalayer.model.mapper.ImageMapper
 import com.example.datalayer.model.mapper.ShoppingItemMapper
 import com.example.datalayer.remote.service.ApiService
 import com.example.domain.model.MyImage
 import com.example.domain.model.ShoppingItem
-import com.example.domain.repository.MainRepository
+import com.example.domain.repository.ImageRepository
+import com.example.domain.repository.ItemRepository
 import javax.inject.Inject
 
-class MainRepositoryImp @Inject constructor(
+class ImageRepositoryImp @Inject constructor(
     val apiService: ApiService,
-    val dao: ShoppingItemDao,
-    val shoppingMapper: ShoppingItemMapper,
     val imageMapper: ImageMapper
-) : MainRepository {
-    override suspend fun addITem(shoppingItem: ShoppingItem) {
-        dao.addItem(shoppingMapper.mapFromDomainModel(shoppingItem))
-    }
-
-    override suspend fun deleteITem(shoppingItem: ShoppingItem) {
-        dao.deleteItem(shoppingMapper.mapFromDomainModel(shoppingItem))
-    }
-
-    override suspend fun getAllItem(): List<ShoppingItem> {
-        return shoppingMapper.toDomainList(dao.getAllItem())
-    }
-
-    override suspend fun calculatePrice(): Float {
-        return dao.getTotalPrice()
-    }
+) : ImageRepository {
 
     override suspend fun search(query: String): Resource<List<MyImage>> {
         return try {
