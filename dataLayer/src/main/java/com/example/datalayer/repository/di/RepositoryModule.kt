@@ -22,7 +22,7 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideRepository(
+    fun provideShoppingItemRepository(
         shoppingItemDao: ShoppingItemDao,
         shoppingItemMapper: ShoppingItemMapper
     ) = ItemRepositoryImp(shoppingItemDao, shoppingItemMapper) as ItemRepository
@@ -30,7 +30,7 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideRepository(
+    fun provideImageRepository(
         apiService: ApiService,
         imageMapper: ImageMapper
     ) = ImageRepositoryImp(apiService, imageMapper) as ImageRepository

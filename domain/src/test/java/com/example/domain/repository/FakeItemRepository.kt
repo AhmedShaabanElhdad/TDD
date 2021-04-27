@@ -1,10 +1,10 @@
 package com.example.domain.repository
 
-import com.example.datalayer.common.Resource
+import com.example.domain.core.Resource
 import com.example.domain.model.MyImage
 import com.example.domain.model.ShoppingItem
 
-class FakeRepository : ItemRepository {
+class FakeItemRepository : ItemRepository {
 
     private val shoppingItem = ShoppingItem()
     private val shoppingItems = mutableListOf<ShoppingItem>(shoppingItem)
@@ -30,13 +30,6 @@ class FakeRepository : ItemRepository {
     override suspend fun calculatePrice(): Float {
         price = shoppingItems.sumByDouble { (it.price * it.amount).toDouble() }.toFloat()
         return price
-    }
-
-    override suspend fun search(query: String): Resource<List<MyImage>> {
-        return if (showReturnNetworkError)
-            Resource.error("error", null)
-        else
-            Resource.success(listOf())
     }
 
 

@@ -1,6 +1,5 @@
 package com.example.datalayer.repository
 
-import com.example.datalayer.common.Resource
 import com.example.datalayer.local.dao.ShoppingItemDao
 import com.example.datalayer.model.mapper.ImageMapper
 import com.example.datalayer.model.mapper.ShoppingItemMapper
