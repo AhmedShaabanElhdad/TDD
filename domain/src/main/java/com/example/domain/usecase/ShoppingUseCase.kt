@@ -5,7 +5,7 @@ import com.example.domain.repository.ImageRepository
 import com.example.domain.repository.ItemRepository
 import javax.inject.Inject
 
-class ShoppingUseCase @Inject constructor(val repository: ItemRepository,val imageRepository: ImageRepository){
+class ShoppingUseCase @Inject constructor(private val repository: ItemRepository,private val imageRepository: ImageRepository){
 
     suspend fun getAllItems() = repository.getAllItem()
 
@@ -18,5 +18,7 @@ class ShoppingUseCase @Inject constructor(val repository: ItemRepository,val ima
 
     suspend fun deleteItem(shoppingItem: ShoppingItem) =
         repository.deleteITem(shoppingItem)
+
+    suspend fun search(query:String) = imageRepository.search(query)
 
 }
